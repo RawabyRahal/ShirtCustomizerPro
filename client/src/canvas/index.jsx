@@ -1,9 +1,10 @@
+import React, { Suspense, lazy } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, Center } from "@react-three/drei";
 import Shirt from "./Shirt";
-import Backdrop from "./Backdrop";
 import CameraRig from "./CameraRig";
-import { Suspense } from "react";
+
+const Backdrop = lazy(() => import("./Backdrop"));
 
 const CanvasModel = () => {
   return (
@@ -16,7 +17,9 @@ const CanvasModel = () => {
       <ambientLight intensity={0.5} />
       <Environment preset="city" />
       <CameraRig>
-        <Backdrop />
+        <Suspense fallback={null}>
+          <Backdrop />
+        </Suspense>
         <Center>
           <Suspense fallback={null}>
             <Shirt />
