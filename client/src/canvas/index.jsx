@@ -17,13 +17,9 @@ const CanvasModel = () => {
       <ambientLight intensity={0.5} />
       <Environment preset="city" />
       <CameraRig>
-        <Suspense fallback={null}>
-          <Backdrop />
-        </Suspense>
+        <Backdrop />
         <Center>
-          <Suspense fallback={null}>
-            <Shirt />
-          </Suspense>
+          <Shirt />
         </Center>
       </CameraRig>
     </Canvas>
