@@ -39,13 +39,51 @@ const Customizer = () => {
       }
 
       case "aipicker": {
-        return <AIPicker />;
+        return (
+          <AIPicker
+            prompt={prompt}
+            setPrompt={setPrompt}
+            generatingImg={generatingImg}
+            handleSubmit={handleSubmit}
+          />
+        );
       }
       default:
         return null;
     }
   };
 
+  const handleSubmit = async (type) => {
+    if(!prompt) return alert("Please enter a prompt");
+
+    try {
+      // call the backend to generate the AI image
+      setGeneratingImg(true);
+      const response = await fetch('http://localhost:8080/api/v1/dalle', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt
+        })
+      })
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+      const data = await response.json();
+      console.log({"data": data})
+      handleDecals(type, `data:image/png;base64,${data.photo}`);
+    }
+    catch (error) {
+      alert(error)
+    }
+    finally{
+      setGeneratingImg(false)
+      setActiveEditorTab("")
+    }
+  }
   const handleDecals = (type, result) => {
     const decalType = DecalTypes[type];
 
