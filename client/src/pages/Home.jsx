@@ -16,7 +16,7 @@ const Home = () => {
         <motion.section className="home" {...slideAnimation("left")}>
           <motion.header {...slideAnimation("down")}>
             <img
-              src="./threejs.png"
+              src="./logo.png"
               alt="logo"
               className="w-8 h-8 object-contain"
             />
@@ -24,18 +24,33 @@ const Home = () => {
 
           <motion.div className="head-content" {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
-              <h1 className="head-text">LET'S <br className="xl:block hidden"/>DO IT</h1>
+            <h1 className="head-text">
+  CREATE <br className="xl:block hidden" /> UR TEE
+</h1>
             </motion.div>
 
-            <motion.div className="flex flex-col gap-5" {...headContainerAnimation}>
-              <p className="max-w-md font-normal text-gray-600 text-base">
-              Create your unique and exclusive shirt with our brand-new 3D customization tool. <strong>Unleash your imagination</strong>{" "} and define your own style.
+            <motion.div
+              className="flex flex-col gap-5"
+              {...headContainerAnimation}
+            >
+              <p className="max-w-md font-normal text-gray-200 text-base">
+                Discover the art of crafting your{" "}
+                <span className="text-blue-500 font-bold">unique</span> and{" "}
+                <span className="text-blue-500 font-bold">exclusive</span> shirt
+                with our cutting-edge{" "}
+                <span className="text-blue-500 font-bold">
+                  3D customization tool
+                </span>
+                . Embrace creativity and{" "}
+                <strong>bring your imagination to life</strong>. Explore endless
+                options and create a masterpiece that reflects your personal
+                style.
               </p>
 
               <CustomButton
                 type="filled"
-                title="Customize It"
-                handleClick={() => state.intro = false}
+                title="Start Customizing"
+                handleClick={() => (state.intro = false)}
                 customStyles="w-fit px-4 py-2.5 font-bold text-sm"
               />
             </motion.div>
