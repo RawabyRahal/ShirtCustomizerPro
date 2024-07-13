@@ -159,12 +159,12 @@ const Customizer = () => {
               handleClick={() => (state.intro = true)}
               customStyles="w-fit px-4 py-2.5 font-bold text-sm"
             />
-            <CustomButton
+            {/* <CustomButton
               type="filled"
               title="Download Canvas"
               handleClick={downloadCanvasToImage}
               customStyles="w-fit px-4 py-2.5 font-bold text-sm ml-2"
-            />
+            /> */}
           </motion.div>
 
           <motion.div
@@ -177,7 +177,14 @@ const Customizer = () => {
                 tab={tab}
                 isFilterTab
                 isActiveTab={activeFilterTab[tab.name]}
-                handleClick={() => handleActiveFilterTab(tab.name)}
+                // handleClick={() => handleActiveFilterTab(tab.name)}
+                handleClick={() => {
+                  if (tab.name === "download") {
+                    downloadCanvasToImage();
+                  } else {
+                    handleActiveFilterTab(tab.name)
+                  }
+                }}
               />
             ))}
           </motion.div>
