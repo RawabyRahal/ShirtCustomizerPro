@@ -141,7 +141,7 @@ const Customizer = () => {
                     key={tab.name}
                     tab={tab}
                     handleClick={() => setActiveEditorTab(tab.name)}
-                    // isActive
+                    isActive
                   />
                 ))}
                 {generateTabContent()}
@@ -158,6 +158,12 @@ const Customizer = () => {
               title="Go Back"
               handleClick={() => (state.intro = true)}
               customStyles="w-fit px-4 py-2.5 font-bold text-sm"
+            />
+            <CustomButton
+              type="filled"
+              title="Download Canvas"
+              handleClick={downloadCanvasToImage}
+              customStyles="w-fit px-4 py-2.5 font-bold text-sm ml-2"
             />
           </motion.div>
 
