@@ -15,8 +15,7 @@ import {
   FilePicker,
   Tab,
 } from "../components";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 
 const Customizer = () => {
   const snap = useSnapshot(state);
@@ -28,6 +27,7 @@ const Customizer = () => {
     logoShirt: true,
     stylishShirt: false,
   });
+  const [isLongSleeve, setIsLongSleeve] = useState(false);
 
   // displaying tab content depending on the activeTab
   const generateTabContent = () => {
@@ -70,9 +70,6 @@ const Customizer = () => {
           prompt,
         }),
       });
-      //   if (!response.ok) {
-      //     throw new Error(`HTTP error! status: ${response.status}`);
-      // }
 
       const data = await response.json();
       console.log({ data: data });
@@ -84,6 +81,7 @@ const Customizer = () => {
       setActiveEditorTab("");
     }
   };
+
   const handleDecals = (type, result) => {
     const decalType = DecalTypes[type];
 
@@ -118,9 +116,9 @@ const Customizer = () => {
   };
 
   const handleTabClick = (tabName) => {
-    setActiveEditorTab((prevTab) => (prevTab === tabName ? null : tabName)); 
+    setActiveEditorTab((prevTab) => (prevTab === tabName ? null : tabName));
   };
-  // takes the type of a file and have to pass it to the readerfunction to get the data
+
   const readFile = (type) => {
     reader(file).then((result) => {
       handleDecals(type, result);
@@ -128,67 +126,71 @@ const Customizer = () => {
     });
   };
 
+  const handleLongSleeveToggle = () => {
+    setIsLongSleeve((prev) => !prev);
+  };
+
   return (
     <AnimatePresence>
-    {!snap.intro && (
-      <>
-        <motion.div
-          key="custom"
-          className="absolute top-0 left-0 z-10"
-          {...slideAnimation("left")}
-        >
-          <div className="flex items-center min-h-screen">
-            <div className="editortabs-container tabs">
-              {EditorTabs.map((tab) => (
-                <Tab
-                  key={tab.name}
-                  tab={tab}
-                  handleClick={() => handleTabClick(tab.name)}
-                  isActive
-                />
-              ))}
-              {generateTabContent()}
+      {!snap.intro && (
+        <>
+          <motion.div
+            key="custom"
+            className="absolute top-0 left-0 z-10"
+            {...slideAnimation("left")}
+          >
+            <div className="flex items-center min-h-screen">
+              <div className="editortabs-container tabs">
+                {EditorTabs.map((tab) => (
+                  <Tab
+                    key={tab.name}
+                    tab={tab}
+                    handleClick={() => handleTabClick(tab.name)}
+                    isActive
+                  />
+                ))}
+                {generateTabContent()}
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        <motion.div
-          className="absolute top-5 left-5 z-50"
-          {...fadeAnimation}
-        >
-          <CustomButton
-            type="filled"
-            title={
-              <span>
-               <KeyboardArrowLeftIcon className="inline-block mr-1 mb-0.5" />Back to Main</span>
-            }
-            // title="Go Back"
-            handleClick={() => (state.intro = true)}
-            customStyles="w-fit px-4 py-2.5 font-bold text-sm flex items-center"
-            // icon={<ArrowBackIosNewIcon  />}
-          />
-        </motion.div>
-
-        <motion.div className="filtertabs-container" {...slideAnimation("up")}>
-          {FilterTabs.map((tab) => (
-            <Tab
-              key={tab.name}
-              tab={tab}
-              isFilterTab
-              isActiveTab={activeFilterTab[tab.name]}
-              handleClick={() => {
-                if (tab.name === "download") {
-                  downloadCanvasToImage();
-                } else {
-                  handleActiveFilterTab(tab.name);
-                }
-              }}
+          <motion.div className="absolute top-5 left-5 z-50" {...fadeAnimation}>
+            <CustomButton
+              type="filled"
+              title={
+                <span>
+                  <KeyboardArrowLeftIcon className="inline-block mr-1 mb-0.5" />
+                  Back to Main
+                </span>
+              }
+              handleClick={() => (state.intro = true)}
+              customStyles="w-fit px-4 py-2.5 font-bold text-sm flex items-center"
             />
-          ))}
-        </motion.div>
-      </>
-    )}
-  </AnimatePresence>
+          </motion.div>
+
+          <motion.div className="filtertabs-container" {...slideAnimation("up")}>
+            {FilterTabs.map((tab) => (
+              <Tab
+                key={tab.name}
+                tab={tab}
+                isFilterTab
+                isActiveTab={activeFilterTab[tab.name]}
+                handleClick={() => {
+                  if (tab.name === "download") {
+                    downloadCanvasToImage();
+                  } else {
+                    handleActiveFilterTab(tab.name);
+                  }
+                }}
+              />
+            ))}
+
+          </motion.div>
+
+       
+        </>
+      )}
+    </AnimatePresence>
   );
 };
 
