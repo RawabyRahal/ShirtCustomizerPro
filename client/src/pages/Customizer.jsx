@@ -15,6 +15,8 @@ import {
   FilePicker,
   Tab,
 } from "../components";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 
 const Customizer = () => {
   const snap = useSnapshot(state);
@@ -54,36 +56,34 @@ const Customizer = () => {
   };
 
   const handleSubmit = async (type) => {
-    if(!prompt) return alert("Please enter a prompt");
+    if (!prompt) return alert("Please enter a prompt");
 
     try {
       // call the backend to generate the AI image
       setGeneratingImg(true);
-      const response = await fetch('http://localhost:8080/api/v1/dalle', {
-        method: 'POST',
+      const response = await fetch("http://localhost:8080/api/v1/dalle", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          prompt
-        })
-      })
-    //   if (!response.ok) {
-    //     throw new Error(`HTTP error! status: ${response.status}`);
-    // }
-    
+          prompt,
+        }),
+      });
+      //   if (!response.ok) {
+      //     throw new Error(`HTTP error! status: ${response.status}`);
+      // }
+
       const data = await response.json();
-      console.log({"data": data})
+      console.log({ data: data });
       handleDecals(type, `data:image/png;base64,${data.photo}`);
+    } catch (error) {
+      alert(error);
+    } finally {
+      setGeneratingImg(false);
+      setActiveEditorTab("");
     }
-    catch (error) {
-      alert(error)
-    }
-    finally{
-      setGeneratingImg(false)
-      setActiveEditorTab("")
-    }
-  }
+  };
   const handleDecals = (type, result) => {
     const decalType = DecalTypes[type];
 
@@ -127,70 +127,65 @@ const Customizer = () => {
 
   return (
     <AnimatePresence>
-      {!snap.intro && (
-        <>
-          <motion.div
-            key="custom"
-            className="absolute top-0 left-0 z-10"
-            {...slideAnimation("left")}
-          >
-            <div className="flex items-center min-h-screen">
-              <div className="editortabs-container tabs">
-                {EditorTabs.map((tab) => (
-                  <Tab
-                    key={tab.name}
-                    tab={tab}
-                    handleClick={() => setActiveEditorTab(tab.name)}
-                    isActive
-                  />
-                ))}
-                {generateTabContent()}
-              </div>
+    {!snap.intro && (
+      <>
+        <motion.div
+          key="custom"
+          className="absolute top-0 left-0 z-10"
+          {...slideAnimation("left")}
+        >
+          <div className="flex items-center min-h-screen">
+            <div className="editortabs-container tabs">
+              {EditorTabs.map((tab) => (
+                <Tab
+                  key={tab.name}
+                  tab={tab}
+                  handleClick={() => setActiveEditorTab(tab.name)}
+                  isActive
+                />
+              ))}
+              {generateTabContent()}
             </div>
-          </motion.div>
+          </div>
+        </motion.div>
 
-          <motion.div
-            className="absolute z-10 top-5 right-5"
-            {...fadeAnimation}
-          >
-            <CustomButton
-              type="filled"
-              title="Go Back"
-              handleClick={() => (state.intro = true)}
-              customStyles="w-fit px-4 py-2.5 font-bold text-sm"
+        <motion.div
+          className="absolute top-5 left-5 z-50"
+          {...fadeAnimation}
+        >
+          <CustomButton
+            type="filled"
+            title={
+              <span>
+               <KeyboardArrowLeftIcon className="inline-block mr-1 mb-0.5" />Back to Main</span>
+            }
+            // title="Go Back"
+            handleClick={() => (state.intro = true)}
+            customStyles="w-fit px-4 py-2.5 font-bold text-sm flex items-center"
+            // icon={<ArrowBackIosNewIcon  />}
+          />
+        </motion.div>
+
+        <motion.div className="filtertabs-container" {...slideAnimation("up")}>
+          {FilterTabs.map((tab) => (
+            <Tab
+              key={tab.name}
+              tab={tab}
+              isFilterTab
+              isActiveTab={activeFilterTab[tab.name]}
+              handleClick={() => {
+                if (tab.name === "download") {
+                  downloadCanvasToImage();
+                } else {
+                  handleActiveFilterTab(tab.name);
+                }
+              }}
             />
-            {/* <CustomButton
-              type="filled"
-              title="Download Canvas"
-              handleClick={downloadCanvasToImage}
-              customStyles="w-fit px-4 py-2.5 font-bold text-sm ml-2"
-            /> */}
-          </motion.div>
-
-          <motion.div
-            className="filtertabs-container"
-            {...slideAnimation("up")}
-          >
-            {FilterTabs.map((tab) => (
-              <Tab
-                key={tab.name}
-                tab={tab}
-                isFilterTab
-                isActiveTab={activeFilterTab[tab.name]}
-                // handleClick={() => handleActiveFilterTab(tab.name)}
-                handleClick={() => {
-                  if (tab.name === "download") {
-                    downloadCanvasToImage();
-                  } else {
-                    handleActiveFilterTab(tab.name)
-                  }
-                }}
-              />
-            ))}
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+          ))}
+        </motion.div>
+      </>
+    )}
+  </AnimatePresence>
   );
 };
 

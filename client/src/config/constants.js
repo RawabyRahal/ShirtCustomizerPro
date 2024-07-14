@@ -24,17 +24,21 @@ export const EditorTabs = [
 export const FilterTabs = [
   {
     name: "logoShirt",
+    title: "Shirt with Logo",
     icon: logoShirt,
   },
   {
     name: "stylishShirt",
+    title: "Logo on Full Shirt",
     icon: stylishShirt,
   },
   {
     name: "download",
+    title: "Download Design",
     icon: download,
   },
 ];
+
 
 export const DecalTypes = {
   logo: {

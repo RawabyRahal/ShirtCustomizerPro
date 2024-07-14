@@ -8,6 +8,9 @@ import {
 } from "../config/motion";
 import state from "../store";
 import { CustomButton } from "../components";
+import { FaPaintBrush } from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 const Home = () => {
   const snap = useSnapshot(state);
   return (
@@ -16,7 +19,7 @@ const Home = () => {
         <motion.section className="home" {...slideAnimation("left")}>
           <motion.header {...slideAnimation("down")}>
             <img
-              src="./logo.png"
+              src="./logoR.png"
               alt="logo"
               className="w-8 h-8 object-contain"
             />
@@ -24,9 +27,9 @@ const Home = () => {
 
           <motion.div className="head-content" {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
-            <h1 className="head-text">
-  CREATE <br className="xl:block hidden" /> UR TEE
-</h1>
+              <h1 className="head-text">
+                CREATE <br className="xl:block hidden" /> UR TEE
+              </h1>
             </motion.div>
 
             <motion.div
@@ -49,7 +52,10 @@ const Home = () => {
 
               <CustomButton
                 type="filled"
-                title="Start Customizing"
+                title={
+                  <span>
+                    Start Customizing <KeyboardArrowRightIcon className="inline-block ml-1" /></span>
+                }
                 handleClick={() => (state.intro = false)}
                 customStyles="w-fit px-4 py-2.5 font-bold text-sm"
               />
