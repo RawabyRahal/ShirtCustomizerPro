@@ -117,6 +117,9 @@ const Customizer = () => {
     });
   };
 
+  const handleTabClick = (tabName) => {
+    setActiveEditorTab((prevTab) => (prevTab === tabName ? null : tabName)); 
+  };
   // takes the type of a file and have to pass it to the readerfunction to get the data
   const readFile = (type) => {
     reader(file).then((result) => {
@@ -140,7 +143,7 @@ const Customizer = () => {
                 <Tab
                   key={tab.name}
                   tab={tab}
-                  handleClick={() => setActiveEditorTab(tab.name)}
+                  handleClick={() => handleTabClick(tab.name)}
                   isActive
                 />
               ))}
