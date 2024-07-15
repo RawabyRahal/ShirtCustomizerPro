@@ -30,7 +30,7 @@ const LongSleeveShirt = () => {
         material={materials.Shirt}
         material-roughness={1}
         dispose={null}
-        position={[0, -0.05, 0.1]}
+        position={[-0.01, -0.05, 0.1]}
         scale={0.51}
         // rotation={[-Math.PI / 2, 0, 0]}
       >

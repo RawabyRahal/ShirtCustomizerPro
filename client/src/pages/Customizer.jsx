@@ -17,7 +17,8 @@ import {
 } from "../components";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Customizer = () => {
   const snap = useSnapshot(state);
   const [file, setFile] = useState("");
@@ -56,7 +57,10 @@ const Customizer = () => {
   };
 
   const handleSubmit = async (type) => {
-    if (!prompt) return alert("Please enter a prompt");
+    if (!prompt) {
+      toast.error("Please enter a prompt");
+      return;
+    }
 
     try {
       // call the backend to generate the AI image
@@ -70,12 +74,16 @@ const Customizer = () => {
           prompt,
         }),
       });
-
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
       const data = await response.json();
       console.log({ data: data });
       handleDecals(type, `data:image/png;base64,${data.photo}`);
     } catch (error) {
-      alert(error);
+      toast.error(`Error: ${error.message}`, {
+        position: "top-center",
+      });
     } finally {
       setGeneratingImg(false);
       setActiveEditorTab("");
@@ -125,7 +133,7 @@ const Customizer = () => {
       setActiveEditorTab("");
     });
   };
-  const [isOpen, setIsOpen] = useState(true); // State to toggle open/close
+  const [isOpen, setIsOpen] = useState(true);
 
   const toggleTabs = () => {
     setIsOpen(!isOpen);
@@ -211,6 +219,7 @@ const Customizer = () => {
           </motion.div>
         </>
       )}
+      <ToastContainer position="top-center" />
     </AnimatePresence>
   );
 };

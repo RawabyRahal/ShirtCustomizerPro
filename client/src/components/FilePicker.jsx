@@ -44,7 +44,7 @@ const FilePicker = ({ file, setFile, readFile }) => {
 
         <CustomButton
           type="filled"
-          title="Full"
+          title="Full Image"
           handleClick={() => readFile("full")}
           customStyles="text-xs"
         />
