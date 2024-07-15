@@ -42,7 +42,7 @@ const CustomButton = ({ type, title, customStyles, handleClick }) => {
       variants={buttonVariants}
       whileHover="hover"
       // whileTap="tap"
-      className={`px-2 py-1.5 flex-1 font-bold rounded-md shadow-md ${customStyles}`}
+      className={`px-2 py-1.5 flex-1 font-bold rounded-full shadow-md ${customStyles}`}
       style={generateStyle(type)}
       onClick={handleClick}
     >

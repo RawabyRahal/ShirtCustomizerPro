@@ -16,6 +16,7 @@ import {
   Tab,
 } from "../components";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 const Customizer = () => {
   const snap = useSnapshot(state);
@@ -27,7 +28,6 @@ const Customizer = () => {
     logoShirt: true,
     stylishShirt: false,
   });
-  const [isLongSleeve, setIsLongSleeve] = useState(false);
 
   // displaying tab content depending on the activeTab
   const generateTabContent = () => {
@@ -125,11 +125,11 @@ const Customizer = () => {
       setActiveEditorTab("");
     });
   };
+  const [isOpen, setIsOpen] = useState(true); // State to toggle open/close
 
-  const handleLongSleeveToggle = () => {
-    setIsLongSleeve((prev) => !prev);
+  const toggleTabs = () => {
+    setIsOpen(!isOpen);
   };
-
   return (
     <AnimatePresence>
       {!snap.intro && (
@@ -140,16 +140,37 @@ const Customizer = () => {
             {...slideAnimation("left")}
           >
             <div className="flex items-center min-h-screen">
-              <div className="editortabs-container tabs">
-                {EditorTabs.map((tab) => (
-                  <Tab
-                    key={tab.name}
-                    tab={tab}
-                    handleClick={() => handleTabClick(tab.name)}
-                    isActive
-                  />
-                ))}
-                {generateTabContent()}
+              <div
+                className={`editortabs-container tabs fixed left-0  ${
+                  isOpen ? "translate-x-0" : "-translate-x-full"
+                } transition-transform duration-300 ease-in-out`}
+              >
+                <div className="flex flex-col h-1/2 space-y-6">
+                  {EditorTabs.map((tab) => (
+                    <Tab
+                      key={tab.name}
+                      tab={tab}
+                      handleClick={() => handleTabClick(tab.name)}
+                      isActive
+                      // className={"justify-between"}
+                    />
+                  ))}
+                  {generateTabContent()}
+                </div>
+              </div>
+
+              <div
+                className={`${
+                  isOpen ? "ml-16" : "ml-0"
+                } toggle-icon fixed rounded-tr-md rounded-br-md left-1 transform -translate-y-4/5 py-2 shadow-lg hover:bg-gray-200 transition-colors duration-300 z-10 cursor-pointer`}
+                style={{ backgroundColor: "rgba(255, 255, 255, 0.272)" }}
+                onClick={toggleTabs}
+              >
+                {isOpen ? (
+                  <BiChevronLeft size={24} className="text-gray-800 " />
+                ) : (
+                  <BiChevronRight size={24} className="text-gray-800" />
+                )}
               </div>
             </div>
           </motion.div>
@@ -168,7 +189,10 @@ const Customizer = () => {
             />
           </motion.div>
 
-          <motion.div className="filtertabs-container" {...slideAnimation("up")}>
+          <motion.div
+            className="filtertabs-container"
+            {...slideAnimation("up")}
+          >
             {FilterTabs.map((tab) => (
               <Tab
                 key={tab.name}
@@ -184,10 +208,7 @@ const Customizer = () => {
                 }}
               />
             ))}
-
           </motion.div>
-
-       
         </>
       )}
     </AnimatePresence>
