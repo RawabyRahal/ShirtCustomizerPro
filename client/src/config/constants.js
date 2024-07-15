@@ -1,4 +1,4 @@
-import { swatch, fileIcon, ai, logoShirt, stylishShirt, download } from "../assets";
+import { swatch, fileIcon, ai, logoShirt, stylishShirt, download, fabric } from "../assets";
 
 export const EditorTabs = [
   {
@@ -12,6 +12,7 @@ export const EditorTabs = [
     title: "Upload Images",
     description: "Select and upload images for customization",
   },
+  { name: "fabrictexturespicker", icon: fabric, label: "Fabric Textures" },
   {
     name: "aipicker",
     icon: ai,
@@ -50,3 +51,10 @@ export const DecalTypes = {
     filterTab: "stylishShirt",
   },
 };
+
+
+export const FabricTextures = [
+  { id: 1, name: "Cotton", textureUrl: "/logo.jpg" },
+  { id: 2, name: "Denim", textureUrl: "/logo.jpg" },
+  { id: 3, name: "Silk", textureUrl: "/logo.jpg" },
+];

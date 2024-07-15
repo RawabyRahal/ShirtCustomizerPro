@@ -3,7 +3,8 @@ import { easing } from 'maath';
 import { useFrame } from '@react-three/fiber';
 import { AccumulativeShadows, RandomizedLight } from '@react-three/drei';
 // import 'normalize.css';
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Backdrop = () => {
   const shadows = useRef();
 
@@ -11,6 +12,8 @@ const Backdrop = () => {
   useEffect(() => {
     if (!window.WebGLRenderingContext) {
       console.error('WebGL not supported');
+      // toast.error('WebGL not supported');
+      return;
     }
   }, []);
 

@@ -8,8 +8,19 @@ const CustomButton = ({ type, title, customStyles, handleClick }) => {
   const snap = useSnapshot(state);
 
   const buttonVariants = {
-    rest: { scale: 1 },
-    hover: { scale: 1.1 },
+    rest: (type) => ({
+      scale: 1,
+      backgroundColor: type === "filled" ? snap.color : "transparent",
+      borderColor: snap.color,
+      color: type === "filled" ? getContrastingColor(snap.color) : snap.color,
+    }),
+    hover: (type) => ({
+      scale: 1.1,
+      backgroundColor: type === "filled" ? "transparent" : snap.color,
+      borderColor: type === "filled" ? snap.color : "transparent",
+      borderWidth: type === "filled" ? "1px" : "0px",
+      color: type === "filled" ? snap.color : getContrastingColor(snap.color),
+    }),
     tap: { scale: 0.95 },
   };
 
@@ -41,7 +52,8 @@ const CustomButton = ({ type, title, customStyles, handleClick }) => {
     <motion.button
       variants={buttonVariants}
       whileHover="hover"
-      // whileTap="tap"
+      whileTap="tap"
+      custom={type}
       className={`px-2 py-1.5 flex-1 font-bold rounded-full shadow-md ${customStyles}`}
       style={generateStyle(type)}
       onClick={handleClick}

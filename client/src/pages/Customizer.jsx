@@ -11,6 +11,7 @@ import { fadeAnimation, slideAnimation } from "../config/motion";
 import {
   AIPicker,
   ColorPicker,
+  FabricTexturesPicker,
   CustomButton,
   FilePicker,
   Tab,
@@ -29,6 +30,7 @@ const Customizer = () => {
     logoShirt: true,
     stylishShirt: false,
   });
+  const [selectedFabricTexture, setSelectedFabricTexture] = useState(null);
 
   // displaying tab content depending on the activeTab
   const generateTabContent = () => {
@@ -40,7 +42,9 @@ const Customizer = () => {
       case "filepicker": {
         return <FilePicker file={file} setFile={setFile} readFile={readFile} />;
       }
-
+      // case "fabrictexturespicker": {
+      //   return <FabricTexturesPicker onSelectTexture={handleSelectFabricTexture} />;
+      // }
       case "aipicker": {
         return (
           <AIPicker
@@ -55,7 +59,9 @@ const Customizer = () => {
         return null;
     }
   };
-
+  const handleSelectFabricTexture = (texture) => {
+    setSelectedFabricTexture(texture.textureUrl);
+  };
   const handleSubmit = async (type) => {
     if (!prompt) {
       toast.error("Please enter a prompt");
@@ -218,6 +224,17 @@ const Customizer = () => {
             ))}
           </motion.div>
         </>
+      )}
+      {selectedFabricTexture && (
+        <motion.img
+          src={selectedFabricTexture}
+          alt="Fabric Texture"
+          className="absolute top-0 left-0 w-full h-full object-cover"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        />
       )}
       <ToastContainer position="top-center" />
     </AnimatePresence>

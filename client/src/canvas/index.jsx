@@ -33,7 +33,7 @@ const CanvasModel = () => {
           title={
             isLongSleeve ? "Switch to Short Sleeves" : "Switch to Long Sleeves"
           }
-          customStyles="py-2 px-3 mt-4"
+          customStyles="py-2 px-3 mt-4 shadow-2xl white-shadow"
           handleClick={toggleSleeveLength}
         />
       </div>
