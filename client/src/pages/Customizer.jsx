@@ -156,7 +156,7 @@ const Customizer = () => {
 
           <motion.div className="absolute top-5 left-5 z-50" {...fadeAnimation}>
             <CustomButton
-              type="filled"
+              type="outline"
               title={
                 <span>
                   <KeyboardArrowLeftIcon className="inline-block mr-1 mb-0.5" />

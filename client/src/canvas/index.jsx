@@ -27,13 +27,13 @@ const CanvasModel = () => {
           <Center>{!isLongSleeve ? <Shirt /> : <LongSleeveShirt />}</Center>
         </CameraRig>
       </Canvas>
-      <div className="absolute top-4 right-4 z-10">
+      <div className="absolute top-1 right-5 z-10">
         <CustomButton
           type="filled"
           title={
             isLongSleeve ? "Switch to Short Sleeves" : "Switch to Long Sleeves"
           }
-          customStyles="mt-4"
+          customStyles=" mt-4"
           handleClick={toggleSleeveLength}
         />
       </div>
