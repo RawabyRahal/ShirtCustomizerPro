@@ -8,6 +8,8 @@ const Shirt = () => {
   const snap = useSnapshot(state);
   const { nodes, materials } = useGLTF("/shirt_baked.glb");
   console.log({"nodes: " : nodes})
+  console.log({"materials: " : materials})
+  
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
 
