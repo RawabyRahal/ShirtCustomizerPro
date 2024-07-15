@@ -54,7 +54,7 @@ export const DecalTypes = {
 
 
 export const FabricTextures = [
-  { id: 1, name: "Cotton", textureUrl: "/logo.jpg" },
-  { id: 2, name: "Denim", textureUrl: "/logo.jpg" },
-  { id: 3, name: "Silk", textureUrl: "/logo.jpg" },
+  { id: 1, name: "Cotton", textureUrl: swatch },
+  { id: 2, name: "Denim", textureUrl: ai },
+  { id: 3, name: "Silk", textureUrl: fabric },
 ];

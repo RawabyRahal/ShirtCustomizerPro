@@ -42,9 +42,11 @@ const Customizer = () => {
       case "filepicker": {
         return <FilePicker file={file} setFile={setFile} readFile={readFile} />;
       }
-      // case "fabrictexturespicker": {
-      //   return <FabricTexturesPicker onSelectTexture={handleSelectFabricTexture} />;
-      // }
+      case "fabrictexturespicker": {
+        return (
+          <FabricTexturesPicker onSelectTexture={handleSelectFabricTexture} />
+        );
+      }
       case "aipicker": {
         return (
           <AIPicker
@@ -61,6 +63,9 @@ const Customizer = () => {
   };
   const handleSelectFabricTexture = (texture) => {
     setSelectedFabricTexture(texture.textureUrl);
+    state.isLogoTexture = texture.textureUrl.includes("logo");
+    state.isFullTexture = !texture.textureUrl.includes("logo");
+    handleDecals(state.isFullTexture ? "full" : "logo", texture.textureUrl);
   };
   const handleSubmit = async (type) => {
     if (!prompt) {
@@ -224,17 +229,6 @@ const Customizer = () => {
             ))}
           </motion.div>
         </>
-      )}
-      {selectedFabricTexture && (
-        <motion.img
-          src={selectedFabricTexture}
-          alt="Fabric Texture"
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        />
       )}
       <ToastContainer position="top-center" />
     </AnimatePresence>

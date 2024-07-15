@@ -1,24 +1,22 @@
-// FabricTextures.js
 import React from "react";
-import { motion } from "framer-motion";
-import { FabricTextures } from "../config/constants"; // Ensure correct path to your FabricTextures data
-
-const FabricTexturesPicker = ({ onSelectTexture }) => {
-  const handleSelectTexture = (texture) => {
-    onSelectTexture(texture);
-  };
-
+import { FabricTextures } from "../config/constants";
+import state from "../store";
+import CustomButton from "./CustomButton";
+const FabricTexturesPicker = ({ onSelectTexture}) => {
   return (
-    <div className="flex flex-wrap justify-center">
+    <div className="filepicker-container">
       {FabricTextures.map((texture) => (
-        <motion.img
+        <div
           key={texture.id}
-          src={texture.textureUrl}
-          alt={texture.name}
-          className="w-32 h-32 m-2 rounded-lg cursor-pointer"
-          whileHover={{ scale: 1.1 }}
-          onClick={() => handleSelectTexture(texture)}
-        />
+          className="fabric-texture"
+          onClick={() => onSelectTexture(texture)}
+        >
+          <img
+            src={texture.textureUrl}
+            alt={texture.name}
+            className="h-20 w-20"
+          />
+        </div>
       ))}
     </div>
   );

@@ -5,16 +5,6 @@ const FilePicker = ({ file, setFile, readFile }) => {
   return (
     <div className="filepicker-container">
       <div className="flex-1 flex flex-col">
-        {/* <input
-          id="file-upload"
-          type="file"
-          accept="image/*"
-          onChange={(e) => setFile(e.target.files[0])}
-        />
-        <label htmlFor="file-upload" className="filepicker-label">
-          Upload File
-        </label> */}
-
         <label
           htmlFor="file-upload"
           className="filepicker-label cursor-pointer flex items-center justify-center  px-6 py-3 rounded-lg shadow-md hover:bg-blue-600"
