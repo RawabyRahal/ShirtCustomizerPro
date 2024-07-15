@@ -12,7 +12,6 @@ const LongSleeveShirt = () => {
 
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
-
   useFrame((state, delta) =>
     easing.dampC(materials.Shirt.color, snap.color, 0.25, delta)
   );
@@ -24,11 +23,11 @@ const LongSleeveShirt = () => {
 
   return (
     <group key={stateString}>
+       {/* <ambientLight intensity={9.5} /> */}
       <mesh
         // castShadow
         geometry={nodes.defaultMaterial.geometry}
         material={materials.Shirt}
-        intensity={-100}
         material-roughness={1}
         dispose={null}
         position={[0, -0.05, 0.1]}
