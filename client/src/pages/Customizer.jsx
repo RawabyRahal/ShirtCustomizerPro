@@ -63,7 +63,7 @@ const Customizer = () => {
   };
   const handleSelectFabricTexture = (texture) => {
     setSelectedFabricTexture(texture.textureUrl);
-    state.isLogoTexture = texture.textureUrl.includes("logo");
+    state.isLogoTexture = !texture.textureUrl.includes("logo");
     state.isFullTexture = !texture.textureUrl.includes("logo");
     handleDecals(state.isFullTexture ? "full" : "logo", texture.textureUrl);
   };
