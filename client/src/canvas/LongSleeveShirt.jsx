@@ -10,6 +10,8 @@ const LongSleeveShirt = () => {
   console.log({ "nodes: ": nodes });
   console.log({ "materials: ": materials });
 
+  const texture = useTexture(snap.fabricTexture || snap.fullDecal);
+  
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
   useFrame((state, delta) =>
@@ -34,11 +36,12 @@ const LongSleeveShirt = () => {
         scale={0.51}
         // rotation={[-Math.PI / 2, 0, 0]}
       >
+        {/* {snap.fabricTexture && ( <meshStandardMaterial map={texture} />)} */}
         {snap.isFullTexture && (
           <Decal
             position={[0, 0, 0]}
             rotation={[0, 0, 0]}
-            scale={1}
+            scale={2}
             map={fullTexture}
           />
         )}

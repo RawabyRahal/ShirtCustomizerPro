@@ -9,7 +9,8 @@ const Shirt = () => {
   const { nodes, materials } = useGLTF("/shirt_baked.glb");
   // console.log({"nodes: " : nodes})
   // console.log({"materials: " : materials})
-  
+  const texture = useTexture( snap.fullDecal || snap.fabricTexture);
+
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
 
@@ -26,6 +27,7 @@ const Shirt = () => {
         material-roughness={1}
         dispose={null}
       >
+        {snap.fabricTexture && ( <meshStandardMaterial map={texture} />)}
         {snap.isFullTexture && (
           <Decal
             position={[0, 0, 0]}

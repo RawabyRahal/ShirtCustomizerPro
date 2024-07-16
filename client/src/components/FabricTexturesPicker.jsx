@@ -9,7 +9,7 @@ const FabricTexturesPicker = ({ onSelectTexture }) => {
       {FabricTextures.map((texture) => (
         <div
           key={texture.id}
-          className="fabric-texture flex justify-center items-center border border-gray-300 rounded cursor-pointer p-1 mb-2"
+          className="fabric-texture flex justify-center w-full items-center border border-gray-300 rounded cursor-pointer p-1 mb-2"
           onClick={() => onSelectTexture(texture)}
         >
           <img

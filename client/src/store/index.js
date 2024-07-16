@@ -7,6 +7,7 @@ const state = proxy({
     isFullTexture: false,
     logoDecal: './logo.png',
     fullDecal: './logo.png',
+    // fabricTexture: null,
 })
 
 export default state;
