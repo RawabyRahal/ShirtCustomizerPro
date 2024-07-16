@@ -1,4 +1,4 @@
-import { swatch, fileIcon, ai, logoShirt, stylishShirt, download, fabric } from "../assets";
+import { swatch, fileIcon, ai, logoShirt, stylishShirt, download, fabric, fabricWallpaper, blackSilk, brownSatin, blackBlue, colorfulSatin, leather, cotton, greenGold, blueTexure, mixTextures, jeans, colorful, blueWhiteTexure } from "../assets";
 
 export const EditorTabs = [
   {
@@ -12,7 +12,7 @@ export const EditorTabs = [
     title: "Upload Images",
     description: "Select and upload images for customization",
   },
-  { name: "fabrictexturespicker", icon: fabric, label: "Fabric Textures" },
+  { name: "fabrictexturespicker", title: "Fabric Textures", icon: fabric, label: "Fabric Textures" },
   {
     name: "aipicker",
     icon: ai,
@@ -54,7 +54,16 @@ export const DecalTypes = {
 
 
 export const FabricTextures = [
-  { id: 1, name: "Cotton", textureUrl: swatch },
-  { id: 2, name: "Denim", textureUrl: ai },
-  { id: 3, name: "Silk", textureUrl: fabric },
+  { id: 1, name: "fabricWallpaper", textureUrl: fabricWallpaper },
+  { id: 2, name: "mixTextures", textureUrl: mixTextures },
+  { id: 3, name: "blueWhiteTexure", textureUrl: blueWhiteTexure },
+  { id: 4, name: "colorful", textureUrl: colorful },
+  { id: 5, name: "greenGold", textureUrl: greenGold },
+  { id: 6, name: "brownSatin", textureUrl: brownSatin },
+  { id: 7, name: "leather", textureUrl: leather },
+  { id: 8, name: "cotton", textureUrl: cotton },
+  { id: 9, name: "blueTexure", textureUrl: blueTexure },
+  { id: 10, name: "blackBlue", textureUrl: blackBlue },
+  { id: 11, name: "blackSilk", textureUrl: blackSilk },
+
 ];

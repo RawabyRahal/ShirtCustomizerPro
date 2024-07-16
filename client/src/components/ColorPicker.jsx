@@ -5,7 +5,7 @@ import state from "../store";
 const ColorPicker = () => {
   const snap = useSnapshot(state);
   return (
-    <div className="absolute left-full ml-6 bottom-0">
+    <div className="absolute left-full ml-6 bottom-9">
       <SketchPicker
         color={snap.color}
         disableAlpha
