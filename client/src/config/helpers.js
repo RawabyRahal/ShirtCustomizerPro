@@ -1,3 +1,5 @@
+import * as THREE from 'three';
+
 export const downloadCanvasToImage = () => {
   const canvas = document.querySelector("canvas");
   const dataURL = canvas.toDataURL();
@@ -32,3 +34,17 @@ export const getContrastingColor = (color) => {
   // Return black or white depending on the brightness
   return brightness > 128 ? "black" : "white";
 };
+
+export const createTextTexture = (text, fontFamily, fontSize) => {
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+  canvas.width = 512; // Adjust as per your requirement
+  canvas.height = 512; // Adjust as per your requirement
+  context.font = `${fontSize}px ${fontFamily}`;
+  // context.fillStyle = color;
+  // context.fillText(text, 10, 50); // Adjust position as per your needs
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.needsUpdate = true;
+  return texture;
+}

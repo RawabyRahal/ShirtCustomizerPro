@@ -1,4 +1,5 @@
 import ai from "./ai.png";
+import text from "./text.png";
 import fileIcon from "./file.png";
 import swatch from "./swatch.png";
 import download from "./download.png";
@@ -20,4 +21,4 @@ import brownSatin from "./brown-satin.jpg";
 import blackBlue from "./black-blue.jpg";
 
 
-export { ai, fileIcon, swatch, download, logoShirt, brownSatin,blackSilk, stylishShirt, colorfulSatin, fabric, fabricWallpaper, leather, greenGold, jeans, colorful, mixTextures, blueTexure, blueWhiteTexure, cotton, blackBlue };
+export { ai, text, fileIcon, swatch, download, logoShirt, brownSatin, blackSilk, stylishShirt, colorfulSatin, fabric, fabricWallpaper, leather, greenGold, jeans, colorful, mixTextures, blueTexure, blueWhiteTexure, cotton, blackBlue };

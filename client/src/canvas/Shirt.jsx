@@ -6,6 +6,7 @@ import { Decal, useGLTF, useTexture } from "@react-three/drei";
 import state from "../store";
 const Shirt = () => {
   const snap = useSnapshot(state);
+  
   const { nodes, materials } = useGLTF("/shirt_baked.glb");
   // console.log({"nodes: " : nodes})
   // console.log({"materials: " : materials})
@@ -27,7 +28,7 @@ const Shirt = () => {
         material-roughness={1}
         dispose={null}
       >
-        {snap.fabricTexture && ( <meshStandardMaterial map={texture} />)}
+        {/* {snap.fabricTexture && ( <meshStandardMaterial map={texture} />)} */}
         {snap.isFullTexture && (
           <Decal
             position={[0, 0, 0]}

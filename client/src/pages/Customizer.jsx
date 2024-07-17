@@ -5,7 +5,7 @@ import { useSnapshot } from "valtio";
 import config from "../config/config";
 import state from "../store";
 import { download } from "../assets";
-import { downloadCanvasToImage, reader } from "../config/helpers";
+import { createTextTexture, downloadCanvasToImage, reader } from "../config/helpers";
 import { EditorTabs, FilterTabs, DecalTypes } from "../config/constants";
 import { fadeAnimation, slideAnimation } from "../config/motion";
 import {
@@ -20,6 +20,7 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import TextEditor from "../components/TextEditor";
 const Customizer = () => {
   const snap = useSnapshot(state);
   const [file, setFile] = useState("");
@@ -31,6 +32,14 @@ const Customizer = () => {
     stylishShirt: false,
   });
   const [selectedFabricTexture, setSelectedFabricTexture] = useState(null);
+  const [textProperties, setTextProperties] = useState({
+    text: "",
+    fontFamily: "Arial",
+    fontSize: 24,
+  });
+  const [shirtText, setShirtText] = useState(null); 
+
+  
 
   // displaying tab content depending on the activeTab
   const generateTabContent = () => {
@@ -57,10 +66,30 @@ const Customizer = () => {
           />
         );
       }
+      case "texteditor":
+        return <TextEditor handleApplyText={handleApplyText} />;
       default:
         return null;
     }
   };
+
+  const updateTextTexture = () => {
+    const { text, fontFamily, fontSize } = textProperties;
+    const textShirt = createTextTexture(text, fontFamily, fontSize);
+    setShirtText(textShirt);
+  };
+  const handleApplyText = ({ text, fontFamily, fontSize }) => {
+    console.log({"textProperties before: ": textProperties})
+
+    setTextProperties({
+      text,
+      fontFamily,
+      fontSize,
+    });
+    console.log({"textProperties after: ": textProperties})
+    updateTextTexture(); 
+  };
+
   const handleSelectFabricTexture = (texture) => {
     setSelectedFabricTexture(texture.textureUrl);
     state.isLogoTexture = !texture.textureUrl.includes("logo");

@@ -1,4 +1,4 @@
-import { swatch, fileIcon, ai, logoShirt, stylishShirt, download, fabric, fabricWallpaper, blackSilk, brownSatin, blackBlue, colorfulSatin, leather, cotton, greenGold, blueTexure, mixTextures, jeans, colorful, blueWhiteTexure } from "../assets";
+import { swatch, fileIcon, ai, text, logoShirt, stylishShirt, download, fabric, fabricWallpaper, blackSilk, brownSatin, blackBlue, colorfulSatin, leather, cotton, greenGold, blueTexure, mixTextures, jeans, colorful, blueWhiteTexure } from "../assets";
 
 export const EditorTabs = [
   {
@@ -14,11 +14,18 @@ export const EditorTabs = [
   },
   { name: "fabrictexturespicker", title: "Fabric Textures", icon: fabric, label: "Fabric Textures" },
   {
+    name: "texteditor",
+    icon: text,
+    title: "Write Text on Shirt",
+    description: "Write text on the shirt and customize font family and size",
+  },
+  {
     name: "aipicker",
     icon: ai,
     title: "Generate Image from Text",
     description: "Use AI to create images based on text input",
   },
+
 ];
 
 

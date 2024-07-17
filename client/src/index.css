@@ -54,11 +54,20 @@ html {
 .filepicker-container {
   @apply absolute left-full ml-6 glassmorphism p-3 w-[195px] h-[220px] flex flex-col rounded-md bottom-14;
 }
+.filepicker-label {
+  @apply border border-gray-300 py-1.5 px-2 rounded-md shadow-sm text-xs text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 cursor-pointer w-fit;
+}
+
 .fabric-texture-container{
   @apply absolute left-full ml-6 glassmorphism p-3 w-[195px] h-[390px] flex flex-col rounded-md ;
 }
-.filepicker-label {
-  @apply border border-gray-300 py-1.5 px-2 rounded-md shadow-sm text-xs text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 cursor-pointer w-fit;
+
+
+.texteditor-container {
+  @apply absolute left-full ml-6 glassmorphism p-4 w-[250px] h-[330px] flex flex-col rounded-md bottom-9;
+}
+.texteditor-label {
+  @apply border border-gray-300 mb-2 py-1.5 px-2 rounded-md shadow-sm text-[0.9rem] text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 cursor-pointer w-fit;
 }
 
 .tab-btn {
