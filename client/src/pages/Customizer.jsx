@@ -85,18 +85,20 @@ const Customizer = () => {
   };
 
   const updateShirtText = () => {
-    const { text, fontFamily, fontSize } = textProperties;
-    const textShirt = createTextTexture(text, fontFamily, fontSize);
+    const { text, fontFamily, fontSize, rotation, position } = textProperties;
+    const textShirt = createTextTexture(text, fontFamily, fontSize, rotation, position);
     setShirtText(textShirt);
     state.textProperties = textProperties;
     console.log({ "textProperties after: ": textProperties });
     console.log({ "state:": {state} });
   };
-  const handleApplyText = (text, fontFamily, fontSize) => {
+  const handleApplyText = (text, fontFamily, fontSize, rotation, position) => {
     setTextProperties({
       text,
       fontFamily,
       fontSize,
+      rotation,
+      position,
     });
     updateShirtText();
   };

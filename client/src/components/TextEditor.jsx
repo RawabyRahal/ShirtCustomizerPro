@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import CustomButton from "./CustomButton";
+import { useSnapshot } from "valtio";
+import state from "../store";
 
 const TextEditor = ({ handleApplyText, textProperties, setTextProperties }) => {
   const { text, fontFamily, fontSize } = textProperties;
+  const snap = useSnapshot(state);
 
   const handleTextChange = (event) => {
     setTextProperties({
@@ -24,9 +27,19 @@ const TextEditor = ({ handleApplyText, textProperties, setTextProperties }) => {
       fontSize: parseInt(event.target.value),
     });
   };
+
+  const handleRotationChange = (event) => {
+    state.rotation = parseInt(event.target.value, 10);
+  };
+
+  const handlePositionChange = (axis, value) => {
+    state.position[axis] = parseFloat(value);
+  };
+
+
   const applyText = () => {
-    handleApplyText(text, fontFamily, fontSize);
-    console.log({ "text, fontFamily, fontSize: ": text, fontFamily, fontSize });
+    handleApplyText(text, fontFamily, fontSize,    state.rotation,  state.position);
+    console.log({ "text, fontFamily, fontSize, rotation, position: ": text, fontFamily, fontSize});
   };
 
   return (
@@ -68,7 +81,33 @@ const TextEditor = ({ handleApplyText, textProperties, setTextProperties }) => {
           <option value="Verdana">Verdana</option>
           <option value="Bookman Old Style">Bookman Old Style</option>
         </select>
-
+        {/* <input
+          type="color"
+          value={snap.textProperties.color}
+          onChange={handleColorChange}
+        /> */}
+        <input
+          type="number"
+          value={snap.rotation}
+          onChange={handleRotationChange}
+          placeholder="Rotation (degrees)"
+        />
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.01"
+          value={snap.position.x}
+          onChange={(e) => handlePositionChange("x", e.target.value)}
+        />
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.01"
+          value={snap.position.y}
+          onChange={(e) => handlePositionChange("y", e.target.value)}
+        />
         <input
           type="number"
           value={fontSize}
