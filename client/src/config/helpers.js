@@ -38,12 +38,10 @@ export const getContrastingColor = (color) => {
 export const createTextTexture = (text, fontFamily, fontSize) => {
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
-  canvas.width = 512; // Adjust as per your requirement
-  canvas.height = 512; // Adjust as per your requirement
-  context.font = `${fontSize}px ${fontFamily}`;
-  // context.fillStyle = color;
-  // context.fillText(text, 10, 50); // Adjust position as per your needs
-
+  // canvas.width = 512;
+  // canvas.height = 512;
+  context.font = `${fontSize}rem ${fontFamily}`;
+  context.fillText(text, canvas.width / 2, canvas.height / 2);
   const texture = new THREE.CanvasTexture(canvas);
   texture.needsUpdate = true;
   return texture;

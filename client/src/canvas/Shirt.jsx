@@ -4,21 +4,32 @@ import { useSnapshot } from "valtio";
 import { useFrame } from "@react-three/fiber";
 import { Decal, useGLTF, useTexture } from "@react-three/drei";
 import state from "../store";
+import { createTextTexture } from "../config/helpers";
 const Shirt = () => {
   const snap = useSnapshot(state);
-  
+
   const { nodes, materials } = useGLTF("/shirt_baked.glb");
   // console.log({"nodes: " : nodes})
   // console.log({"materials: " : materials})
-  const texture = useTexture( snap.fullDecal || snap.fabricTexture);
+  const texture = useTexture(snap.fullDecal || snap.fabricTexture);
 
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
 
-  useFrame((state, delta) => easing.dampC(materials.lambert1.color, snap.color, 0.25, delta));
+  const textProperties = snap.textProperties;
+  const textTexture = createTextTexture(
+    textProperties.text,
+    textProperties.fontSize,
+    textProperties.fontFamily
+  );
+  console.log({ textTexture });
+  
+  useFrame((state, delta) =>
+    easing.dampC(materials.lambert1.color, snap.color, 0.25, delta)
+  );
 
   const stateString = JSON.stringify(snap);
-  
+
   return (
     <group key={stateString}>
       <mesh
@@ -28,7 +39,7 @@ const Shirt = () => {
         material-roughness={1}
         dispose={null}
       >
-        {/* {snap.fabricTexture && ( <meshStandardMaterial map={texture} />)} */}
+        {/* {snap.textProperties && <meshStandardMaterial map={texture} />} */}
         {snap.isFullTexture && (
           <Decal
             position={[0, 0, 0]}
@@ -47,6 +58,17 @@ const Shirt = () => {
             map={logoTexture}
             anisotropy={16}
             // mapAnitrosopy={16}
+            depthTest={false}
+            depthWrite={true}
+          />
+        )}
+        {textTexture && (
+          <Decal
+            position={[0, 0.1, 0.15]} // Adjust position as needed
+            rotation={[0, 0, 0]}
+            scale={1} // Adjust scale as needed
+            map={textTexture}
+            anisotropy={16}
             depthTest={false}
             depthWrite={true}
           />

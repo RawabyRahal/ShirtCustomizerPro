@@ -5,7 +5,11 @@ import { useSnapshot } from "valtio";
 import config from "../config/config";
 import state from "../store";
 import { download } from "../assets";
-import { createTextTexture, downloadCanvasToImage, reader } from "../config/helpers";
+import {
+  createTextTexture,
+  downloadCanvasToImage,
+  reader,
+} from "../config/helpers";
 import { EditorTabs, FilterTabs, DecalTypes } from "../config/constants";
 import { fadeAnimation, slideAnimation } from "../config/motion";
 import {
@@ -15,18 +19,21 @@ import {
   CustomButton,
   FilePicker,
   Tab,
+  TextEditor,
 } from "../components";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import TextEditor from "../components/TextEditor";
+import Shirt from "../canvas/Shirt";
+
 const Customizer = () => {
   const snap = useSnapshot(state);
   const [file, setFile] = useState("");
   const [prompt, setPrompt] = useState("");
   const [generatingImg, setGeneratingImg] = useState(false);
   const [activeEditorTab, setActiveEditorTab] = useState("");
+  const [isOpen, setIsOpen] = useState(true);
   const [activeFilterTab, setActiveFilterTab] = useState({
     logoShirt: true,
     stylishShirt: false,
@@ -37,9 +44,7 @@ const Customizer = () => {
     fontFamily: "Arial",
     fontSize: 24,
   });
-  const [shirtText, setShirtText] = useState(null); 
-
-  
+  const [shirtText, setShirtText] = useState(null);
 
   // displaying tab content depending on the activeTab
   const generateTabContent = () => {
@@ -67,27 +72,34 @@ const Customizer = () => {
         );
       }
       case "texteditor":
-        return <TextEditor handleApplyText={handleApplyText} />;
+        return (
+          <TextEditor
+            handleApplyText={handleApplyText}
+            textProperties={textProperties}
+            setTextProperties={setTextProperties}
+          />
+        );
       default:
         return null;
     }
   };
 
-  const updateTextTexture = () => {
+  const updateShirtText = () => {
     const { text, fontFamily, fontSize } = textProperties;
     const textShirt = createTextTexture(text, fontFamily, fontSize);
     setShirtText(textShirt);
+    state.textProperties = textProperties;
+    console.log({ "textProperties after: ": textProperties });
+    console.log({ "textShirt after: ": textShirt });
+    console.log({ "state:": state });
   };
-  const handleApplyText = ({ text, fontFamily, fontSize }) => {
-    console.log({"textProperties before: ": textProperties})
-
+  const handleApplyText = (text, fontFamily, fontSize) => {
     setTextProperties({
       text,
       fontFamily,
       fontSize,
     });
-    console.log({"textProperties after: ": textProperties})
-    updateTextTexture(); 
+    updateShirtText();
   };
 
   const handleSelectFabricTexture = (texture) => {
@@ -173,7 +185,6 @@ const Customizer = () => {
       setActiveEditorTab("");
     });
   };
-  const [isOpen, setIsOpen] = useState(true);
 
   const toggleTabs = () => {
     setIsOpen(!isOpen);
