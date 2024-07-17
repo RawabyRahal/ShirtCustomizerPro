@@ -90,8 +90,7 @@ const Customizer = () => {
     setShirtText(textShirt);
     state.textProperties = textProperties;
     console.log({ "textProperties after: ": textProperties });
-    console.log({ "textShirt after: ": textShirt });
-    console.log({ "state:": state });
+    console.log({ "state:": {state} });
   };
   const handleApplyText = (text, fontFamily, fontSize) => {
     setTextProperties({

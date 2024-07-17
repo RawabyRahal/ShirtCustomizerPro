@@ -3,6 +3,7 @@ import { useSnapshot } from "valtio";
 import { useFrame } from "@react-three/fiber";
 import { Decal, useGLTF, useTexture } from "@react-three/drei";
 import state from "../store";
+import { createTextTexture } from "../config/helpers";
 
 const LongSleeveShirt = () => {
   const snap = useSnapshot(state);
@@ -11,7 +12,15 @@ const LongSleeveShirt = () => {
   console.log({ "materials: ": materials });
 
   const texture = useTexture(snap.fabricTexture || snap.fullDecal);
-  
+
+  const textProperties = snap.textProperties;
+  const textTexture = createTextTexture(
+    textProperties.text,
+    textProperties.fontSize,
+    textProperties.fontFamily
+  );
+  console.log({ textTexture });
+
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
   useFrame((state, delta) =>
@@ -25,7 +34,7 @@ const LongSleeveShirt = () => {
 
   return (
     <group key={stateString}>
-       {/* <ambientLight intensity={9.5} /> */}
+      {/* <ambientLight intensity={9.5} /> */}
       <mesh
         // castShadow
         geometry={nodes.defaultMaterial.geometry}
@@ -55,6 +64,17 @@ const LongSleeveShirt = () => {
             map={logoTexture}
             anisotropy={16}
             // mapAnitrosopy={16}
+            depthTest={false}
+            depthWrite={true}
+          />
+        )}
+        {textTexture && (
+          <Decal
+            position={[0, 0.1, 0.15]} // Adjust position as needed
+            rotation={[0, 0, 0]}
+            scale={1} // Adjust scale as needed
+            map={textTexture}
+            anisotropy={16}
             depthTest={false}
             depthWrite={true}
           />

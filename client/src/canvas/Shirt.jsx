@@ -64,7 +64,7 @@ const Shirt = () => {
         )}
         {textTexture && (
           <Decal
-            position={[0, 0.1, 0.15]} // Adjust position as needed
+            position={[-0.1, -0.1, 0.15]} // Adjust position as needed
             rotation={[0, 0, 0]}
             scale={1} // Adjust scale as needed
             map={textTexture}
