@@ -11,10 +11,10 @@ const state = proxy({
     textProperties: {
         text: "",
         fontFamily: "",
-        fontSize:-1 ,
+        fontSize: -1,
     },
-    rotation: 0, // rotation in degrees
-    position: { x: 0.5, y: 0.5 }, // normalized position (0-1 range)
+    rotation: null,
+    position: { x: 0.5, y: 0.5 },
 })
 
 export default state;

@@ -74,3 +74,26 @@ export const FabricTextures = [
   { id: 11, name: "blackSilk", textureUrl: blackSilk },
 
 ];
+
+
+export const fontFamilies = [
+  "Times New Roman",
+  "Arial",
+  "Verdana",
+  "Helvetica",
+  "Georgia",
+  "Tahoma",
+  "Courier New",
+  "Brush Script MT",
+  "Comic Sans MS",
+  "Impact",
+  "Lucida Console",
+  "Palatino",
+  "Garamond",
+  "Book Antiqua",
+  "Trebuchet MS",
+  "Arial Black",
+  "Century Gothic",
+  "Franklin Gothic Medium",
+  "Bookman Old Style",
+];

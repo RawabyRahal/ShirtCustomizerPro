@@ -130,38 +130,33 @@ export const createTextTexture = (text, fontFamily, fontSize, color, rotation, p
   const maxWidth = 212;
   const lineHeight = fontSize * scaleFactor;
 
-  // Calculate text width and height
   context.font = `${fontSize * scaleFactor}px ${fontFamily}`;
   const textMetrics = context.measureText(text);
   const textWidth = Math.ceil(textMetrics.width);
   const textHeight = fontSize * scaleFactor;
 
-  // Adjust canvas size based on text size and maximum width
   canvas.width = maxWidth;
   canvas.height = textHeight;
 
-  // Set font and color
   context.font = `${fontSize * scaleFactor}px ${fontFamily}`;
   context.fillStyle = color;
   context.textAlign = 'center';
   context.textBaseline = 'middle';
 
-  // Rotate around the center of the canvas
   context.translate(canvas.width / 2, canvas.height / 2);
-  context.rotate(rotation * Math.PI / 180); // Convert degrees to radians
+  context.rotate(rotation * Math.PI / 180);
   context.translate(-canvas.width / 2, -canvas.height / 2);
 
-  // Calculate position based on canvas dimensions
   const x = position && position.x !== undefined ? canvas.width * position.x : canvas.width / 2;
   const y = position && position.y !== undefined ? canvas.height * position.y : canvas.height / 2;
 
-  // Draw text
+
   context.fillText(text, x, y);
 
-  // Reset transformations
-  context.setTransform(1, 0, 0, 1, 0, 0); // Reset transformations
 
-  // Create texture
+  context.setTransform(1, 0, 0, 1, 0, 0);
+
+
   const texture = new THREE.CanvasTexture(canvas);
   texture.needsUpdate = true;
   return texture;

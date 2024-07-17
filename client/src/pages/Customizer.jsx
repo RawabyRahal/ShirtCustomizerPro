@@ -39,11 +39,7 @@ const Customizer = () => {
     stylishShirt: false,
   });
   const [selectedFabricTexture, setSelectedFabricTexture] = useState(null);
-  const [textProperties, setTextProperties] = useState({
-    text: "",
-    fontFamily: "Arial",
-    fontSize: 24,
-  });
+  const [textProperties, setTextProperties] = useState({});
   const [shirtText, setShirtText] = useState(null);
 
   // displaying tab content depending on the activeTab

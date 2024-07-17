@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CustomButton from "./CustomButton";
 import { useSnapshot } from "valtio";
 import state from "../store";
+import { fontFamilies } from "../config/constants";
 
 const TextEditor = ({ handleApplyText, textProperties, setTextProperties }) => {
   const { text, fontFamily, fontSize } = textProperties;
@@ -36,10 +37,13 @@ const TextEditor = ({ handleApplyText, textProperties, setTextProperties }) => {
     state.position[axis] = parseFloat(value);
   };
 
-
   const applyText = () => {
-    handleApplyText(text, fontFamily, fontSize,    state.rotation,  state.position);
-    console.log({ "text, fontFamily, fontSize, rotation, position: ": text, fontFamily, fontSize});
+    handleApplyText(text, fontFamily, fontSize, state.rotation, state.position);
+    console.log({
+      "text, fontFamily, fontSize, rotation, position: ": text,
+      fontFamily,
+      fontSize,
+    });
   };
 
   return (
@@ -59,55 +63,55 @@ const TextEditor = ({ handleApplyText, textProperties, setTextProperties }) => {
           value={fontFamily}
           onChange={handleFontFamilyChange}
           className="texteditor-label"
+          placeholder="Select Font Family"
         >
-          <option value="Arial">Arial</option>
-          <option value="Times New Roman">Times New Roman</option>
-          <option value="Verdana">Verdana</option>
-          <option value="Helvetica">Helvetica</option>
-          <option value="Georgia">Georgia</option>
-          <option value="Tahoma">Tahoma</option>
-          <option value="Courier New">Courier New</option>
-          <option value="Brush Script MT">Brush Script MT</option>
-          <option value="Comic Sans MS">Comic Sans MS</option>
-          <option value="Impact">Impact</option>
-          <option value="Lucida Console">Lucida Console</option>
-          <option value="Palatino">Palatino</option>
-          <option value="Garamond">Garamond</option>
-          <option value="Book Antiqua">Book Antiqua</option>
-          <option value="Trebuchet MS">Trebuchet MS</option>
-          <option value="Arial Black">Arial Black</option>
-          <option value="Century Gothic">Century Gothic</option>
-          <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
-          <option value="Verdana">Verdana</option>
-          <option value="Bookman Old Style">Bookman Old Style</option>
+          <option value="" disabled>
+            Select Font Family
+          </option>
+          {fontFamilies.map((family) => (
+            <option key={family} value={family}>
+              {family}
+            </option>
+          ))}
         </select>
-        {/* <input
-          type="color"
-          value={snap.textProperties.color}
-          onChange={handleColorChange}
-        /> */}
         <input
           type="number"
           value={snap.rotation}
           onChange={handleRotationChange}
+          className="texteditor-label"
           placeholder="Rotation (degrees)"
         />
-        <input
-          type="range"
-          min="0"
-          max="1"
-          step="0.01"
-          value={snap.position.x}
-          onChange={(e) => handlePositionChange("x", e.target.value)}
-        />
-        <input
-          type="range"
-          min="0"
-          max="1"
-          step="0.01"
-          value={snap.position.y}
-          onChange={(e) => handlePositionChange("y", e.target.value)}
-        />
+        <div className="items-center flex flex-row w-full gap-2">
+          <label htmlFor="positionX" className="texteditor-position">
+            Position X:
+          </label>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            className="texteditor-label"
+            value={snap.position.x}
+            onChange={(e) => handlePositionChange("x", e.target.value)}
+          />
+          <span className="input-value">{snap.position.x}</span>
+        </div>
+
+        <div className="items-center flex flex-row w-full gap-2">
+          <label htmlFor="positionY" className="texteditor-position">
+            Position Y:
+          </label>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            className="texteditor-label"
+            step="0.01"
+            value={snap.position.y}
+            onChange={(e) => handlePositionChange("y", e.target.value)}
+          />
+          <span className="input-value">{snap.position.y}</span>
+        </div>
         <input
           type="number"
           value={fontSize}

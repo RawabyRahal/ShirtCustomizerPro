@@ -64,10 +64,13 @@ html {
 
 
 .texteditor-container {
-  @apply absolute left-full ml-6 glassmorphism p-4 w-[250px] h-[330px] flex flex-col rounded-md bottom-9;
+  @apply absolute left-full ml-6 glassmorphism p-6 w-[400px] h-[500px] flex flex-col rounded-md -bottom-12;
 }
 .texteditor-label {
   @apply border border-gray-300 mb-2 py-1.5 px-2 rounded-md shadow-sm text-[0.9rem] text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 cursor-pointer w-fit;
+}
+.texteditor-position {
+  @apply  mb-2 py-1.5 px-2 text-[0.9rem] text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 cursor-pointer w-fit;
 }
 
 .tab-btn {
@@ -103,4 +106,12 @@ input[type="file"] {
 
 .white-shadow {
   box-shadow:  0 6px 8px rgba(20, 17, 17, 0.635);
+}
+
+
+.input-value {
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 900;
+  color: #803333;
 }
