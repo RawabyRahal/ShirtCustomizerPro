@@ -5,7 +5,7 @@ import CustomButton from "./CustomButton";
 
 const FabricTexturesPicker = ({ onSelectTexture }) => {
   return (
-    <div className="absolute left-full ml-6 glassmorphism -bottom-10 p-3 w-[130px] h-[390px] flex flex-col rounded-md overflow-auto">
+    <div className="absolute left-full ml-6 glassmorphism bottom-2 p-3 w-[130px] h-[390px] flex flex-col rounded-md overflow-auto">
       {FabricTextures.map((texture) => (
         <div
           key={texture.id}
