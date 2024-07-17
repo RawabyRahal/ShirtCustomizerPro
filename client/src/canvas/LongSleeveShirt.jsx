@@ -3,7 +3,7 @@ import { useSnapshot } from "valtio";
 import { useFrame } from "@react-three/fiber";
 import { Decal, useGLTF, useTexture } from "@react-three/drei";
 import state from "../store";
-import { createTextTexture } from "../config/helpers";
+import { createTextTexture, getContrastingColor } from "../config/helpers";
 
 const LongSleeveShirt = () => {
   const snap = useSnapshot(state);
@@ -14,10 +14,13 @@ const LongSleeveShirt = () => {
   const texture = useTexture(snap.fabricTexture || snap.fullDecal);
 
   const textProperties = snap.textProperties;
+  const textColor = getContrastingColor(snap.color);
+
   const textTexture = createTextTexture(
     textProperties.text,
+    textProperties.fontFamily,
     textProperties.fontSize,
-    textProperties.fontFamily
+    textColor
   );
   console.log({ textTexture });
 
@@ -70,9 +73,9 @@ const LongSleeveShirt = () => {
         )}
         {textTexture && (
           <Decal
-            position={[0, 0.1, 0.15]} // Adjust position as needed
+            position={[0, -0.1, 0.15]}
             rotation={[0, 0, 0]}
-            scale={1} // Adjust scale as needed
+            scale={0.4}
             map={textTexture}
             anisotropy={16}
             depthTest={false}

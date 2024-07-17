@@ -35,14 +35,89 @@ export const getContrastingColor = (color) => {
   return brightness > 128 ? "black" : "white";
 };
 
-export const createTextTexture = (text, fontFamily, fontSize) => {
-  const canvas = document.createElement("canvas");
-  const context = canvas.getContext("2d");
-  // canvas.width = 512;
-  // canvas.height = 512;
-  context.font = `${fontSize}rem ${fontFamily}`;
-  context.fillText(text, canvas.width / 2, canvas.height / 2);
+// export const createTextTexture = (text, fontFamily, fontSize) => {
+//   const canvas = document.createElement("canvas");
+//   const context = canvas.getContext("2d");
+//   // canvas.width = 512;
+//   // canvas.height = 512;
+//   context.font = `${fontSize}rem ${fontFamily}`;
+//   context.fillText(text, canvas.width / 2, canvas.height / 2);
+//   const texture = new THREE.CanvasTexture(canvas);
+//   texture.needsUpdate = true;
+//   return texture;
+// }
+
+// export const createTextTexture = (text, fontFamily, fontSize, color) => {
+//   const scaleFactor = 14; 
+//   const canvas = document.createElement('canvas');
+//   const context = canvas.getContext('2d');
+
+//   const textMetrics = context.measureText(text);
+//   canvas.width = Math.ceil((textMetrics.width) * scaleFactor);
+//   canvas.height = (fontSize + 200) * scaleFactor;
+
+//   // Set font and scaling
+//   context.font = `${fontSize * scaleFactor}px ${fontFamily}`;
+//   context.fillStyle = color;
+//   // context.textAlign = 'center';
+//   // context.textBaseline = 'middle';
+
+//   // Draw text with scaling
+//   context.fillText(text, canvas.width / 2, canvas.height / 2);
+
+//   // Create and return the texture
+//   const texture = new THREE.CanvasTexture(canvas);
+//   texture.needsUpdate = true;
+//   return texture;
+// };
+
+
+export const createTextTexture = (text, fontFamily, fontSize, color) => {
+  const scaleFactor = 4;
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
+
+  const maxWidth = 212;
+  const lineHeight = fontSize * scaleFactor
+
+  context.font = `${fontSize * scaleFactor}px ${fontFamily}`;
+
+  const wrapText = (context, text, maxWidth) => {
+    const words = text.split('');
+    let lines = [];
+    let currentLine = '';
+
+    for (let i = 0; i < words.length; i++) {
+      const testLine = currentLine + words[i];
+      const metrics = context.measureText(testLine);
+      const testWidth = metrics.width;
+
+      if (testWidth > maxWidth && i > 0) {
+        lines.push(currentLine);
+        currentLine = words[i];
+      } else {
+        currentLine = testLine;
+      }
+    }
+    lines.push(currentLine);
+    return lines;
+  };
+
+  const lines = wrapText(context, text, maxWidth);
+
+  canvas.width = maxWidth;
+  canvas.height = lines.length * lineHeight;
+
+  context.font = `${fontSize * scaleFactor}px ${fontFamily}`;
+  context.fillStyle = color;
+  context.textAlign = 'center';
+  context.textBaseline = 'middle';
+
+  lines.forEach((line, index) => {
+    context.fillText(line, canvas.width / 2, (index + 0.5) * lineHeight);
+  });
+
   const texture = new THREE.CanvasTexture(canvas);
   texture.needsUpdate = true;
   return texture;
-}
+};

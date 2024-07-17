@@ -4,7 +4,7 @@ import { useSnapshot } from "valtio";
 import { useFrame } from "@react-three/fiber";
 import { Decal, useGLTF, useTexture } from "@react-three/drei";
 import state from "../store";
-import { createTextTexture } from "../config/helpers";
+import { createTextTexture, getContrastingColor } from "../config/helpers";
 const Shirt = () => {
   const snap = useSnapshot(state);
 
@@ -16,14 +16,16 @@ const Shirt = () => {
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
 
+  const textColor = getContrastingColor(snap.color);
   const textProperties = snap.textProperties;
   const textTexture = createTextTexture(
     textProperties.text,
+    textProperties.fontFamily,
     textProperties.fontSize,
-    textProperties.fontFamily
+    textColor
   );
   console.log({ textTexture });
-  
+
   useFrame((state, delta) =>
     easing.dampC(materials.lambert1.color, snap.color, 0.25, delta)
   );
@@ -64,9 +66,9 @@ const Shirt = () => {
         )}
         {textTexture && (
           <Decal
-            position={[-0.1, -0.1, 0.15]} // Adjust position as needed
+            position={[-0.01, -0.1, 0.15]}
             rotation={[0, 0, 0]}
-            scale={1} // Adjust scale as needed
+            scale={0.3}
             map={textTexture}
             anisotropy={16}
             depthTest={false}
