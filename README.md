@@ -26,7 +26,7 @@ To run this project locally, follow these steps:
    ```sh
    npm run dev
 
-- Backend
+#### Backend
 1. Navigate to the backend directory:
    ```sh
    cd ../server
