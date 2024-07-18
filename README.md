@@ -13,7 +13,7 @@ Welcome to ShirtCustomizerPro! This project allows users to customize their shir
 ### Installation
 To run this project locally, follow these steps:
 
-Frontend
+- Frontend
 1. Clone the repository:
    ```sh
    git clone https://github.com/RawabyRahal/ShirtCustomizerPro.git
@@ -26,7 +26,7 @@ Frontend
    ```sh
    npm run dev
 
-Backend
+- Backend
 1. Navigate to the backend directory:
    ```sh
    cd ../server
