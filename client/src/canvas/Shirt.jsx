@@ -24,7 +24,7 @@ const Shirt = () => {
     textProperties.fontSize,
     textColor,
     textProperties.rotation,
-    textProperties.position
+    textProperties.position,
   );
   console.log({ textTexture });
 

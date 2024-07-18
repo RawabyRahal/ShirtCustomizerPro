@@ -45,6 +45,15 @@ const TextEditor = ({ handleApplyText, textProperties, setTextProperties }) => {
       fontSize,
     });
   };
+  const resetFields = () => {
+    setTextProperties({
+      text: "",
+      fontFamily: "",
+      fontSize: "",
+    });
+    state.rotation = 0; // Set rotation to a default value, e.g., 0 degrees
+    state.position = { x: 0.5, y: 0.5 };
+  };
 
   return (
     <div className="texteditor-container">
@@ -52,6 +61,7 @@ const TextEditor = ({ handleApplyText, textProperties, setTextProperties }) => {
         <textarea
           placeholder="Type your text here"
           rows={5}
+          value={text}
           onChange={handleTextChange}
           className=" px-3 placeholder:text-gray-700  text-black rounded-lg outline-none border-none font-medium mb-5"
           style={{
@@ -119,8 +129,9 @@ const TextEditor = ({ handleApplyText, textProperties, setTextProperties }) => {
           placeholder="Font Size"
           className="texteditor-label"
         />
-        <div className="mt-3 flex flex-wrap items-end">
+        <div className="mt-8 flex flex-wrap w-3/4 gap-4">
           <CustomButton type="filled" title="Apply" handleClick={applyText} />
+          <CustomButton type="outline" title="Reset" handleClick={resetFields} />
         </div>
       </div>
     </div>
