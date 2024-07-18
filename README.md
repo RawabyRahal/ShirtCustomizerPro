@@ -1,3 +1,3 @@
 # ShirtCustomizerPro
 
-ShirtCustomizerPro is a full-stack application that allows users to design and customize shirts, in a 3D environment.
+Welcome to ShirtCustomizerPro! This project allows users to customize their shirts with various textures, decals, and colors using an interactive 3D model. Additionally, you can generate custom images from text descriptions using AI.
