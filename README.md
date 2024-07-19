@@ -73,4 +73,5 @@ Use the interface to customize your shirt:
 - **Text Customization:** Add and style custom text on the shirt, with options for different fonts and placements.
 - **Sleeve Options:** Choose between long sleeves or short sleeves to customize the shirt's look.
 
-### Feel free to customize and create unique designs—happy shirt designing!
+
+### Dive in and design your perfect shirt — let ur creativity shine! 🌟👚
