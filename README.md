@@ -25,7 +25,6 @@ To run this project locally, follow these steps:
 3. Start the frontend server:
    ```sh
    npm run dev
-4. Open your web browser and navigate to http://localhost:5173
 
 #### Backend
 1. Navigate to the backend directory:
@@ -38,6 +37,8 @@ To run this project locally, follow these steps:
 3. Start the backend server:
    ```sh
    node index
+   
+#### Open your web browser and navigate to http://localhost:5173 to view the app
 
 ### Technologies Used
 
