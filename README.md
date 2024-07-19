@@ -37,8 +37,7 @@ To run this project locally, follow these steps:
    npm install
 3. Start the backend server:
    ```sh
-   node index
-   
+   node index 
 
 ### Technologies Used
 
