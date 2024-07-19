@@ -60,4 +60,14 @@ To run this project locally, follow these steps:
 - CORS: For handling Cross-Origin Resource Sharing.
 - OpenAI API: For generating images from text descriptions.
 - Cloudinary: For image uploads and management.
+# Backend Technologies
+echo -e "\033[1mBackend\033[0m"
+print_tech "Node.js" "For running JavaScript on the server." "https://nodejs.org/" "🔧"
+print_tech "Express" "For creating the server and API endpoints." "https://expressjs.com/" "🌐"
+print_tech "CORS" "For handling Cross-Origin Resource Sharing." "https://www.npmjs.com/package/cors" "🔄"
+print_tech "OpenAI API" "For generating images from text descriptions." "https://platform.openai.com/docs" "🤖"
+print_tech "Cloudinary" "For image uploads and management." "https://cloudinary.com/" "☁️"
+print_tech "Mongoose" "For MongoDB object modeling." "https://mongoosejs.com/" "🔗"
+print_tech "dotenv" "For managing environment variables." "https://www.npmjs.com/package/dotenv" "🔐"
+print_tech "Nodemon" "For automatically restarting the server during development." "https://nodemon.io/" "🔄"
 
