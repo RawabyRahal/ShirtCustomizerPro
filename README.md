@@ -41,7 +41,7 @@ To run this project locally, follow these steps:
 
 ### Technologies Used
 
-### Frontend
+#### Frontend
 - **[React Vite](https://vitejs.dev/):** For building and developing the user interface.
 - **[Three.js](https://threejs.org/):** For rendering the 3D model.
 - **[Tailwind CSS](https://tailwindcss.com/):** For styling the application.
@@ -55,7 +55,7 @@ To run this project locally, follow these steps:
 - **[react-toastify](https://fkhadra.github.io/react-toastify/):** For toast notifications.
 - **[valtio](https://valtio.dev/):** For state management.
 
-### Backend
+#### Backend
 - **[Node.js](https://nodejs.org/):** For running JavaScript on the server.
 - **[Express](https://expressjs.com/):** For creating the server and API endpoints.
 - **[CORS](https://www.npmjs.com/package/cors):** For handling Cross-Origin Resource Sharing.
