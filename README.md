@@ -10,15 +10,6 @@ Welcome to ShirtCustomizerPro! This project allows users to customize their shir
 - Save and share your custom designs
 - AI Image Generation: Generate custom images from text descriptions
 
-### Usage
-
-Use the interface to customize your shirt:
-- **Color Picker:** Select the base color of the shirt from a range of options.
-- **Texture Selector:** Choose a fabric texture to apply to the shirt.
-- **Decal Uploader:** Upload and apply your custom logo or design to the shirt.
-- **AI Image Generator:** Enter a text description to generate a custom image that will be applied to the shirt.
-- **Text Customization:** Add and style custom text on the shirt, with options for different fonts and placements.
-- **Sleeve Options:** Choose between long sleeves or short sleeves to customize the shirt's look.
 
 ### Installation
 To run this project locally, follow these steps:
@@ -72,4 +63,14 @@ To run this project locally, follow these steps:
 - **[OpenAI API](https://platform.openai.com/docs):** For generating images from text descriptions.
 - **[Cloudinary](https://cloudinary.com/):** For image uploads and management.
 
+### Usage
 
+Use the interface to customize your shirt:
+- **Color Picker:** Select the base color of the shirt from a range of options.
+- **Texture Selector:** Choose a fabric texture to apply to the shirt.
+- **Decal Uploader:** Upload and apply your custom logo or design to the shirt.
+- **AI Image Generator:** Enter a text description to generate a custom image that will be applied to the shirt.
+- **Text Customization:** Add and style custom text on the shirt, with options for different fonts and placements.
+- **Sleeve Options:** Choose between long sleeves or short sleeves to customize the shirt's look.
+
+### Feel free to customize and create unique designs—happy shirt designing!
