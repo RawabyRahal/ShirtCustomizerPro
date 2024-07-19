@@ -32,13 +32,15 @@ To run this project locally, follow these steps:
 
 - #### Backend
   1. Navigate to the backend directory:
+     
      ```sh
      cd ../server
+  3. Install dependencies:
      
-  2. Install dependencies:
      ```sh
      npm install
-  3. Start the backend server:
+  5. Start the backend server:
+
      ```sh
      node index 
 
