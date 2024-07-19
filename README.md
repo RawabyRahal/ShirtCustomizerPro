@@ -64,7 +64,7 @@ To run this project locally, follow these steps:
 - **[Node.js](https://nodejs.org/):** For running JavaScript on the server.
 - **[Express](https://expressjs.com/):** For creating the server and API endpoints.
 - **[CORS](https://www.npmjs.com/package/cors):** For handling Cross-Origin Resource Sharing.
-- **[Axios](https://axios-http.com/):** For making HTTP requests." >> README.md
+- **[Axios](https://axios-http.com/):** For making HTTP requests.
 - **[OpenAI API](https://platform.openai.com/docs):** For generating images from text descriptions.
 - **[Cloudinary](https://cloudinary.com/):** For image uploads and management.
 
