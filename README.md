@@ -30,17 +30,17 @@ To run this project locally, follow these steps:
 
    4. Open your web browser and navigate to `http://localhost:5173` to view the app
 
-#### Backend
-1. Navigate to the backend directory:
-   ```sh
-   cd ../server
-
-2. Install dependencies:
-   ```sh
-   npm install
-3. Start the backend server:
-   ```sh
-   node index 
+- #### Backend
+  1. Navigate to the backend directory:
+     ```sh
+     cd ../server
+     
+  2. Install dependencies:
+     ```sh
+     npm install
+  3. Start the backend server:
+     ```sh
+     node index 
 
 ### 🛠️ Technologies Used
 
