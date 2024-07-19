@@ -16,19 +16,19 @@ To run this project locally, follow these steps:
 
 - #### Frontend
   1. Clone the repository:
+     
      ```sh
      git clone https://github.com/RawabyRahal/ShirtCustomizerPro.git
      cd ShirtCustomizerPro/client
-     
-   2. Install dependencies:
+   3. Install dependencies:
+      
       ```sh
       npm install
+   5. Start the frontend server:
       
-   3. Start the frontend server:
       ```sh
       npm run dev
-
-   4. Open your web browser and navigate to `http://localhost:5173` to view the app
+   7. Open your web browser and navigate to `http://localhost:5173` to view the app
 
 - #### Backend
   1. Navigate to the backend directory:
