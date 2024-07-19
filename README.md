@@ -41,8 +41,6 @@ To run this project locally, follow these steps:
 
 ### Technologies Used
 
-## Technologies Used
-
 ### Frontend
 - **[React Vite](https://vitejs.dev/):** For building and developing the user interface.
 - **[Three.js](https://threejs.org/):** For rendering the 3D model.
