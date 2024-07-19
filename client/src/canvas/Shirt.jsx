@@ -26,7 +26,7 @@ const Shirt = () => {
     textProperties.rotation,
     textProperties.position,
   );
-  console.log({ textTexture });
+  // console.log({ textTexture });
 
   useFrame((state, delta) =>
     easing.dampC(materials.lambert1.color, snap.color, 0.25, delta)

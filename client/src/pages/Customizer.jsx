@@ -128,7 +128,8 @@ const Customizer = () => {
       }
       const data = await response.json();
       console.log({ data: data });
-      handleDecals(type, `data:image/png;base64,${data.photo}`);
+      // handleDecals(type, `data:image/png;base64,${data.photo}`);
+      handleDecals(type, data.photo);
     } catch (error) {
       toast.error(`Error: ${error.message}`, {
         position: "top-center",

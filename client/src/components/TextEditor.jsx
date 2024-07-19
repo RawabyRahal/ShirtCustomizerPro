@@ -39,11 +39,11 @@ const TextEditor = ({ handleApplyText, textProperties, setTextProperties }) => {
 
   const applyText = () => {
     handleApplyText(text, fontFamily, fontSize, state.rotation, state.position);
-    console.log({
-      "text, fontFamily, fontSize, rotation, position: ": text,
-      fontFamily,
-      fontSize,
-    });
+    // console.log({
+    //   "text, fontFamily, fontSize, rotation, position: ": text,
+    //   fontFamily,
+    //   fontSize,
+    // });
   };
   const resetFields = () => {
     setTextProperties({

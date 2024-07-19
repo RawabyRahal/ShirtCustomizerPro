@@ -24,7 +24,7 @@ const LongSleeveShirt = () => {
     textProperties.rotation,
     textProperties.position
   );
-  console.log({ textTexture });
+  // console.log({ textTexture });
 
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
