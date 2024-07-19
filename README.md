@@ -47,8 +47,17 @@ To run this project locally, follow these steps:
 - Tailwind CSS: For styling the application.
 - @react-three/fiber: For integrating Three.js with React.
 - @react-three/drei: For providing useful helpers for Three.js in React.
+- @mui/icons-material: For Material Design icons.
+- framer-motion: For animations and transitions.
+- maath: For mathematical functions used in 3D calculations.
+- react-color: For color pickers.
+- react-icons: For icon components.
+- react-toastify: For toast notifications.
+- valtio: For state management.
 
 #### Backend
 - Node.js & Express: For creating the server and API endpoints.
 - CORS: For handling Cross-Origin Resource Sharing.
 - OpenAI API: For generating images from text descriptions.
+- Cloudinary: For image uploads and management.
+
