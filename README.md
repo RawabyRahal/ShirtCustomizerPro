@@ -39,7 +39,7 @@ To run this project locally, follow these steps:
    ```sh
    node index 
 
-### Technologies Used
+### 🛠️ Technologies Used
 
 #### Frontend
 - **[React Vite](https://vitejs.dev/):** For building and developing the user interface.
