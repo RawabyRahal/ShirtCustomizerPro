@@ -74,4 +74,4 @@ Use the interface to customize your shirt:
 - **Sleeve Options:** Choose between long sleeves or short sleeves to customize the shirt's look.
 <br>
 
-### Dive in & design your perfect shirt — let ur creativity shine! 🌟👚
+### Dive in & design your perfect shirt — let your creativity shine! 🌟👚
