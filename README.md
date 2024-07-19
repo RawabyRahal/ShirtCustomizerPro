@@ -72,6 +72,6 @@ Use the interface to customize your shirt:
 - **AI Image Generator:** Enter a text description to generate a custom image that will be applied to the shirt.
 - **Text Customization:** Add and style custom text on the shirt, with options for different fonts and placements.
 - **Sleeve Options:** Choose between long sleeves or short sleeves to customize the shirt's look.
+<br>
 
-
-### Dive in and design your perfect shirt — let ur creativity shine! 🌟👚
+### Dive in & design your perfect shirt — let ur creativity shine! 🌟👚
