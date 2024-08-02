@@ -77,24 +77,6 @@ Use the interface to customize your shirt:
 - **AI Image Generator:** Enter a text description to generate a custom image that will be applied to the shirt.
 - **Text Customization:** Add and style custom text on the shirt, with options for different fonts and placements.
 - **Sleeve Options:** Choose between long sleeves or short sleeves to customize the shirt's look.
-- 
-
-graph LR
-    A[User Interface]
-    B[Frontend: React.js]
-    C[Backend: Node.js & Express]
-    D[OpenAI API]
-    E[Cloudinary]
-    
-    A --> B
-    B --> C
-    C --> D
-    C --> E
-    D --> C
-    E --> C
-    C --> B
-    B --> A
-
 <br>
 
 ### Dive in & design your perfect shirt — let your creativity shine! 🌟👚
