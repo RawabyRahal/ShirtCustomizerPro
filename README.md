@@ -1,6 +1,7 @@
 # ShirtCustomizerPro
 
-Welcome to ShirtCustomizerPro! This application allows you to customize your shirts with various textures, decals, and colors using an interactive 3D model. Additionally, you can generate custom images from text descriptions using AI.
+Welcome to ShirtCustomizerPro!
+This application allows you to customize your shirts with various textures, decals, and colors using an interactive 3D model. Additionally, you can generate custom images from text descriptions using AI.
 
 ### Features
 - Customizable 3D shirt model
